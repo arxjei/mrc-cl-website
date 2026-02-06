@@ -1,0 +1,27 @@
+---
+import "@/styles/global.css";
+import Footer from "@/components/includes/footer.astro";
+import Header from "@/components/includes/header.astro";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<Header
+		title={title}
+		description={description}
+	/>
+	<body
+		class="font-poppins bg-linear-to-br from-orange-500 to-orange-600 min-h-screen">
+		<!-- content -->
+		<slot />
+
+		<!-- footer -->
+		<Footer />
+	</body>
+</html>
