@@ -1,5 +1,6 @@
 ---
 import App from "@/components/app.astro";
+import { Image } from "astro:assets";
 import { Copy, PartyPopper } from "lucide-astro";
 ---
 
@@ -7,9 +8,11 @@ import { Copy, PartyPopper } from "lucide-astro";
 	title="MariBank Referral Code AM397158 - Get ₱150 Bonus in 2026"
 	description="Get ₱150 free bonus with MariBank referral code AM397158">
 	<div class="w-full h-64 md:h-80 lg:h-96 overflow-hidden">
-		<img
-			src="images/banner.webp"
+		<Image
+			src={"/images/banner.webp"}
 			alt="MariBank ₱150 Bonus Referral Code AM397158 - Get Free Money Now"
+			width={1200}
+			height={800}
 			class="w-full h-full object-cover mask-[linear-gradient(to_bottom,black_40%,transparent)]"
 		/>
 	</div>
@@ -121,9 +124,11 @@ import { Copy, PartyPopper } from "lucide-astro";
 					class="inline-flex items-center justify-center gap-4 hover:scale-110 transition-transform duration-300"
 					rel="noopener noreferrer"
 					aria-label="Download MariBank from Google Play Store">
-					<img
-						src="images/playstore-btn.webp"
+					<Image
+						src="/images/playstore-btn.webp"
 						alt="Google Play Store"
+						width={200}
+						height={60}
 						class="h-14 md:h-16 lg:h-20 w-auto"
 					/>
 				</a>
@@ -133,9 +138,11 @@ import { Copy, PartyPopper } from "lucide-astro";
 					class="inline-flex items-center justify-center gap-4 hover:scale-110 transition-transform duration-300"
 					rel="noopener noreferrer"
 					aria-label="Download MariBank from Apple App Store">
-					<img
-						src="images/appstore-btn.webp"
+					<Image
+						src="/images/appstore-btn.webp"
 						alt="Apple App Store"
+						width={200}
+						height={60}
 						class="h-14 md:h-16 lg:h-20 w-auto"
 					/>
 				</a>
