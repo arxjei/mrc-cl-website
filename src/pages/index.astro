@@ -2,15 +2,16 @@
 import App from "@/components/app.astro";
 import { Image } from "astro:assets";
 import { Copy, PartyPopper } from "lucide-astro";
+import { siteData } from "@/data/site";
 ---
 
 <App
-	title="MariBank Referral Code AM397158 - Get ₱150 Bonus in 2026"
-	description="Get ₱150 free bonus with MariBank referral code AM397158">
+	title={siteData.referral.title}
+	description={siteData.referral.description}>
 	<div class="w-full h-64 md:h-80 lg:h-96 overflow-hidden">
 		<Image
 			src={"/images/banner.webp"}
-			alt="MariBank ₱150 Bonus Referral Code AM397158 - Get Free Money Now"
+			alt="MariBank Referral Banner"
 			width={1200}
 			height={800}
 			class="w-full h-full object-cover mask-[linear-gradient(to_bottom,black_40%,transparent)]"
@@ -21,12 +22,11 @@ import { Copy, PartyPopper } from "lucide-astro";
 		<div class="text-center pb-12 md:pb-14 pt-8 px-4">
 			<h1
 				class="text-white text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg mb-4 leading-tight">
-				MariBank Referral Code: Get ₱150 Free Bonus
+				{siteData.referral.title}
 			</h1>
 			<p
 				class="text-white text-base md:text-lg lg:text-xl mb-8 drop-shadow-md leading-relaxed">
-				Use referral code below when signing up to receive an instant ₱150
-				bonus!
+				Use referral code below when signing up!
 			</p>
 
 			<div
@@ -35,10 +35,11 @@ import { Copy, PartyPopper } from "lucide-astro";
 					class="flex items-center justify-center gap-3 flex-wrap select-none">
 					<span
 						class="text-white text-4xl md:text-5xl lg:text-7xl font-black tracking-wider md:tracking-widest drop-shadow-lg">
-						AM397158
+						{siteData.referral.code}
 					</span>
 					<button
-						onclick="navigator.clipboard.writeText('AM397158'); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 5000)"
+						data-code={siteData.referral.code}
+						onclick="navigator.clipboard.writeText(this.dataset.code); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 5000)"
 						class="group bg-white/30 hover:bg-white/50 active:scale-95 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">
 						<span class="flex items-center gap-2 group-[.copied]:hidden">
 							<Copy class="w-5 h-5" />
@@ -56,59 +57,28 @@ import { Copy, PartyPopper } from "lucide-astro";
 		<div class="py-10 md:py-12 px-4">
 			<h2
 				class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-10 drop-shadow-lg">
-				How to Get Your ₱150 MariBank Bonus
+				How to Get Your {siteData.referral.bonus} Bonus?
 			</h2>
 			<div
 				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-				<div
-					class="bg-white rounded-3xl p-8 md:p-10 text-center shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-					<div
-						class="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-						<span class="text-white text-3xl md:text-4xl font-black">1</span>
-					</div>
-					<h3
-						class="text-orange-600 text-xl md:text-2xl font-bold mb-3 leading-snug">
-						Download MariBank App
-					</h3>
-					<p class="text-gray-600 text-sm md:text-base leading-relaxed">
-						Download the official MariBank app from Google Play Store or Apple
-						App Store on your smartphone
-					</p>
-				</div>
-
-				<div
-					class="bg-white rounded-3xl p-8 md:p-10 text-center shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-					<div
-						class="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-						<span class="text-white text-3xl md:text-4xl font-black">2</span>
-					</div>
-					<h3
-						class="text-orange-600 text-xl md:text-2xl font-bold mb-3 leading-snug">
-						Sign Up & Enter Code
-					</h3>
-					<p class="text-gray-600 text-sm md:text-base leading-relaxed">
-						Create your new MariBank account and enter the referral code <strong
-							>AM397158</strong
-						> during registration to unlock your ₱150 bonus
-					</p>
-				</div>
-
-				<div
-					class="bg-white rounded-3xl p-8 md:p-10 text-center shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-					<div
-						class="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-						<span class="text-white text-3xl md:text-4xl font-black">3</span>
-					</div>
-					<h3
-						class="text-orange-600 text-xl md:text-2xl font-bold mb-3 leading-snug">
-						Deposit ₱1,000 & Get Bonus
-					</h3>
-					<p class="text-gray-600 text-sm md:text-base leading-relaxed">
-						Make your first ₱1,000 deposit from any e-wallet, bank, or existing
-						MariBank account and keep it for 3 consecutive days to instantly
-						receive your ₱150 bonus
-					</p>
-				</div>
+				{
+					siteData.steps.map((step) => (
+						<div class="bg-white rounded-3xl p-8 md:p-10 text-center shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+							<div class="w-16 h-16 md:w-20 md:h-20 bg-linear-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+								<span class="text-white text-3xl md:text-4xl font-black">
+									{step.number}
+								</span>
+							</div>
+							<h3 class="text-orange-600 text-xl md:text-2xl font-bold mb-3 leading-snug">
+								{step.title}
+							</h3>
+							<p
+								class="text-gray-600 text-sm md:text-base leading-relaxed"
+								set:html={step.description}
+							/>
+						</div>
+					))
+				}
 			</div>
 		</div>
 
