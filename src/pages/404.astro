@@ -1,32 +1,21 @@
 ---
 import App from "@/components/app.astro";
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <App
-	title="404 Not Found"
-	description="The page you are looking for does not exist.">
-	
-	<div class="flex flex-col items-center justify-center min-h-screen text-center px-4">
+	title="404 — Page Not Found"
+	description="The page you are looking for does not exist. Return to the homepage.">
+	<div
+		class="flex flex-col items-center justify-center min-h-screen text-center px-4">
 		<h1 class="text-9xl font-black text-white mb-4">404</h1>
 		<p class="text-2xl text-white/90 mb-2">Page Not Found</p>
-		<p class="text-lg text-white/70">
-			Redirecting to home in <span id="countdown" class="font-bold">5</span> seconds...
+		<p class="text-lg text-white/70 mb-8">
+			The page you're looking for doesn't exist or has been moved.
 		</p>
+		<a
+			href="/"
+			class="bg-white text-orange-500 font-bold px-6 py-3 rounded-full hover:bg-orange-50 transition-colors">
+			Back to Home
+		</a>
 	</div>
-
-	<script define:vars={{ origin: canonicalURL.origin }}>
-		let seconds = 5;
-		const countdownEl = document.getElementById('countdown');
-		
-		const interval = setInterval(() => {
-			seconds--;
-			if (countdownEl) countdownEl.textContent = seconds.toString();
-			
-			if (seconds <= 0) {
-				clearInterval(interval);
-				window.location.href = origin;
-			}
-		}, 1000);
-	</script>
 </App>

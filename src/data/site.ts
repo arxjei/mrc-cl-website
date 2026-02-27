@@ -3,6 +3,7 @@ interface Referral {
 	bonus: string;
 	title: string;
 	description: string;
+	usersCount: number;
 }
 
 interface Step {
@@ -29,6 +30,7 @@ export const siteData: SiteConfig = {
 		bonus: referralBonus,
 		title: `MariBank Referral Code: ${referralBonus} Bonus`,
 		description: `Get ${referralBonus} free bonus with MariBank referral code ${referralCode}`,
+		usersCount: 193, // update as of 2/27/26
 	},
 	steps: [
 		{
