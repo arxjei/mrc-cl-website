@@ -1,0 +1,69 @@
+---
+import StepCard from "@/components/ui/StepCard.astro";
+import { Copy, PartyPopper } from "lucide-astro";
+
+const { siteData } = Astro.props;
+---
+
+<!-- Referral Section -->
+<div class="text-center pb-12 md:pb-14 pt-8 px-4">
+	<h1
+		class="text-white text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg mb-4 leading-tight">
+		{siteData.referral.title}
+	</h1>
+	<p
+		class="text-white text-base md:text-lg lg:text-xl mb-8 drop-shadow-md leading-relaxed">
+		Use referral code below when signing up!
+	</p>
+
+	<div
+		class="inline-block bg-linear-to-br from-orange-500 to-orange-400 border-4 border-dashed border-white/40 rounded-3xl p-8 md:p-12 mb-6 shadow-2xl hover:shadow-3xl transition-all duration-300">
+		<div class="flex items-center justify-center gap-3 flex-wrap select-none">
+			<span
+				class="text-white text-4xl md:text-5xl lg:text-7xl font-black tracking-wider md:tracking-widest drop-shadow-lg">
+				{siteData.referral.code}
+			</span>
+			<button
+				data-code={siteData.referral.code}
+				onclick="navigator.clipboard.writeText(this.dataset.code); this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 5000)"
+				class="group bg-white/30 hover:bg-white/50 active:scale-95 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">
+				<span class="flex items-center gap-2 group-[.copied]:hidden">
+					<Copy class="w-5 h-5" />
+					Copy Code
+				</span>
+				<span class="hidden items-center gap-2 group-[.copied]:flex">
+					<PartyPopper class="w-5 h-5" />
+					Copied!
+				</span>
+			</button>
+		</div>
+	</div>
+
+	<p
+		class="text-white/80 text-sm md:text-base lg:text-lg mb-4 drop-shadow-md leading-relaxed">
+		🎉
+		<strong
+			class="text-white font-black text-base md:text-lg lg:text-xl tabular-nums">
+			{siteData.referral.usersCount}+
+		</strong>
+		users have successfully used the referral code and received their bonus!
+	</p>
+</div>
+
+<div class="py-10 md:py-12 px-4">
+	<h2
+		class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-10 drop-shadow-lg">
+		How to Get Your Bonus?
+	</h2>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+		{
+			siteData.steps.map((step: any) => (
+				<StepCard
+					number={step.number}
+					title={step.title}
+					description={step.description}
+				/>
+			))
+		}
+	</div>
+</div>

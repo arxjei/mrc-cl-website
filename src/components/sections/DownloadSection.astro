@@ -1,0 +1,24 @@
+---
+import StoreButton from "@/components/ui/StoreButton.astro";
+---
+
+<div class="text-center py-10 md:py-12 pb-16 md:pb-20 px-4">
+	<h2
+		class="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-10 drop-shadow-lg leading-tight">
+		Download MariBank Now!
+	</h2>
+	<div class="flex justify-center gap-4 md:gap-5 flex-wrap">
+		<StoreButton
+			href="https://play.google.com/store/apps/details?id=ph.seabank.seabank&hl=en"
+			src="/images/playstore-btn.webp"
+			alt="Google Play Store"
+			label="Download MariBank from Google Play Store"
+		/>
+		<StoreButton
+			href="https://apps.apple.com/ph/app/maribank-ph-seabank/id1592249158"
+			src="/images/appstore-btn.webp"
+			alt="Apple App Store"
+			label="Download MariBank from Apple App Store"
+		/>
+	</div>
+</div>

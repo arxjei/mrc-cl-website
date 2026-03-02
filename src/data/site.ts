@@ -1,3 +1,5 @@
+import { Gift, Pen } from "lucide-astro";
+
 interface Referral {
 	code: string;
 	bonus: string;
@@ -17,10 +19,6 @@ export interface SiteConfig {
 	steps: Step[];
 }
 
-/**
- * Configure Your Referral Code and Bonus Details Here
- */
-
 const referralCode = "AM397158";
 const referralBonus = "₱150";
 
@@ -28,9 +26,9 @@ export const siteData: SiteConfig = {
 	referral: {
 		code: referralCode,
 		bonus: referralBonus,
-		title: `MariBank Referral Code: ${referralBonus} Bonus`,
+		title: `MariBank Referral Code ${new Date().getFullYear()}`,
 		description: `Get ${referralBonus} free bonus with MariBank referral code ${referralCode}`,
-		usersCount: 193, // update as of 2/27/26
+		usersCount: 202, // update as of 3/2/26
 	},
 	steps: [
 		{
@@ -46,8 +44,8 @@ export const siteData: SiteConfig = {
 		},
 		{
 			number: 3,
-			title: "Deposit ₱1,000 & Get Bonus",
-			description: `Make your first ₱1,000 deposit from any e-wallet, bank, or existing MariBank account and keep it for 3 consecutive days to instantly receive your ${referralBonus} bonus`,
+			title: "Get Your Bonus!",
+			description: `Make your first ₱1,000 deposit from any e-wallet, bank, or existing MariBank account and keep it for 3 days to instantly receive your ${referralBonus} bonus`,
 		},
 	],
 };
