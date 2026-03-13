@@ -3,6 +3,7 @@ import StepCard from "@/components/ui/StepCard.astro";
 import { Copy, PartyPopper } from "lucide-astro";
 
 const { siteData } = Astro.props;
+const targetCount = siteData.referral.usersCount;
 ---
 
 <!-- Referral Section -->
@@ -13,7 +14,7 @@ const { siteData } = Astro.props;
 	</h1>
 	<p
 		class="text-white text-base md:text-lg lg:text-xl mb-8 drop-shadow-md leading-relaxed">
-		Use referral code below when signing up!
+		Use the code below when signing up to receive rewards.
 	</p>
 
 	<div
@@ -43,17 +44,19 @@ const { siteData } = Astro.props;
 		class="text-white/80 text-sm md:text-base lg:text-lg mb-4 drop-shadow-md leading-relaxed">
 		🎉
 		<strong
-			class="text-white font-black text-base md:text-lg lg:text-xl tabular-nums">
-			{siteData.referral.usersCount}+
+			id="referral-count"
+			class="text-white font-black text-base md:text-lg lg:text-xl tabular-nums"
+			data-target={targetCount}>
+			0
 		</strong>
-		users have successfully used the referral code and received their bonus!
+		users have successfully used the code and received their rewards!
 	</p>
 </div>
 
 <div class="py-10 md:py-12 px-4">
 	<h2
 		class="text-center text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-10 drop-shadow-lg">
-		How to Get Your Bonus?
+		How to Get Your MariBank Rewards?
 	</h2>
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
 		{
@@ -67,3 +70,28 @@ const { siteData } = Astro.props;
 		}
 	</div>
 </div>
+
+<script>
+	const el = document.getElementById("referral-count");
+	const target = parseInt(el.dataset.target, 10);
+	const steps = 60;
+
+	function easeOut(t) {
+		return 1 - Math.pow(1 - t, 3);
+	}
+
+	let step = 0;
+
+	function tick() {
+		step++;
+		const progress = step / steps;
+		el.textContent = Math.round(easeOut(progress) * target).toLocaleString();
+
+		if (step < steps) {
+			const delay = 10 + Math.pow(progress, 2) * 180;
+			setTimeout(tick, delay);
+		}
+	}
+
+	tick();
+</script>

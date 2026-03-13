@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-
 interface Props {
 	title: string;
 	description: string;
@@ -68,6 +66,4 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	/>
 
 	<title>{title}</title>
-
-	<ViewTransitions />
 </head>
