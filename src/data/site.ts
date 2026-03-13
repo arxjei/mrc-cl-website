@@ -28,7 +28,7 @@ export const siteData: SiteConfig = {
 		bonus: referralBonus,
 		title: `MariBank Referral Code ${new Date().getFullYear()}`,
 		description: `Get ${referralBonus} free bonus with MariBank referral code ${referralCode}`,
-		usersCount: 202, // update as of 3/2/26
+		usersCount: 270, // update as of 3/13/26 +68
 	},
 	steps: [
 		{
